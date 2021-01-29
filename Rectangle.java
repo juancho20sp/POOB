@@ -190,9 +190,39 @@ public class Rectangle{
      */
     
     public void rainbow(String[] colors){
-        for(int i = 0; i < colors.length; i++)
-        color = colors[i];
-        draw();
+        for(int i = 0; i < colors.length; i++) {
+            erase();
+            color = colors[i];
+            draw();
+        }
     }
+    
+    /**
+     * Rotate the rectangle by 90deg
+     */
+    
+    public void rotate(){
+        int h = height;
+        int w = width;
+        
+        erase();
+        height = w;
+        width = h;
+        draw();
+        
+    }
+    
+    /**
+     * Returns the area of the rectangle
+     * @return area of the rectangle
+     */
+    
+    public int area(){
+        System.out.println(height * width + "px");
+        return height * width;        
+    }
+    
+
+
 }
 
