@@ -212,6 +212,16 @@ public class Rectangle{
         
     }
     
+    /**
+     * Returns the area of the rectangle
+     * @return area of the rectangle
+     */
+    
+    public int area(){
+        System.out.println(height * width + "px");
+        return height * width;        
+    }
+    
 
 
 }
