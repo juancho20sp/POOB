@@ -190,9 +190,11 @@ public class Rectangle{
      */
     
     public void rainbow(String[] colors){
-        for(int i = 0; i < colors.length; i++)
+        for(int i = 0; i < colors.length; i++) {
+        erase();
         color = colors[i];
         draw();
     }
+}
 }
 
