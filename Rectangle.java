@@ -185,7 +185,7 @@ public class Rectangle{
     
     /**
      * Change the color of the rectangle, mostly as a rainbow
-     * @param color the new color. Valid colors are "red", "yellow", "blue", "green",
+     * @param Array of the new colors. Valid colors are "red", "yellow", "blue", "green",
      * "magenta" and "black".
      */
     
@@ -222,6 +222,26 @@ public class Rectangle{
         return height * width;        
     }
     
+    /**
+     * Makes a 10% zoom on the rectangle
+     * @param Either '+' or '-' are valid options
+     */
+    public void zoom(char ch){
+        float newHeight = height * 0.1f;
+        float newWidth = width * 0.1f;
+        
+        erase();
+        
+        if (ch == '+'){      
+            height = height + (int)newHeight;
+            width = width + (int)newWidth;                      
+        } else if (ch == '-'){
+            height = height - (int)newHeight;
+            width = width - (int)newWidth;
+        }
+        
+        draw();
+    }
 
 
 }
