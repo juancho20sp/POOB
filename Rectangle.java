@@ -169,7 +169,7 @@ public class Rectangle{
             canvas.draw(this, color,
                 new java.awt.Rectangle(xPosition, yPosition, 
                                        width, height));
-            canvas.wait(10);
+            canvas.wait(1000);
         }
     }
 
@@ -181,6 +181,18 @@ public class Rectangle{
             Canvas canvas = Canvas.getCanvas();
             canvas.erase(this);
         }
+    }
+    
+    /**
+     * Change the color of the rectangle, mostly as a rainbow
+     * @param color the new color. Valid colors are "red", "yellow", "blue", "green",
+     * "magenta" and "black".
+     */
+    
+    public void rainbow(String[] colors){
+        for(int i = 0; i < colors.length; i++)
+        color = colors[i];
+        draw();
     }
 }
 
