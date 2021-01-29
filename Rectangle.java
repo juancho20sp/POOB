@@ -191,10 +191,28 @@ public class Rectangle{
     
     public void rainbow(String[] colors){
         for(int i = 0; i < colors.length; i++) {
-        erase();
-        color = colors[i];
-        draw();
+            erase();
+            color = colors[i];
+            draw();
+        }
     }
-}
+    
+    /**
+     * Rotate the rectangle by 90deg
+     */
+    
+    public void rotate(){
+        int h = height;
+        int w = width;
+        
+        erase();
+        height = w;
+        width = h;
+        draw();
+        
+    }
+    
+
+
 }
 
