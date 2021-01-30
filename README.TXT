@@ -1,5 +1,5 @@
 Project "shapes"
-Authors: Michael Kolling and David J. Barnes
+Authors: Michael Kolling and David J. Barnes, Carlos Javier Orduz Trujillo
 
 This project is part of the material for the book
 
