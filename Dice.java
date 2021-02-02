@@ -12,13 +12,14 @@ public class Dice{
      */
     public Dice(){
         r1 = new Rectangle();
-        r1.changeSize(40,40);
+        r1.changeSize(200,200);
         r1.makeVisible();
         value = 1;
         isVisible = false;
     }
     /**
      * Returns value's attribute
+     * @return returns the value of the dice
      */
     public int getValue(){
         return value;
@@ -37,6 +38,7 @@ public class Dice{
      * @param color the color desired
      */
     public void changeColor(String colorChange){
+        r1.changeColor(colorChange);
     }
 
     /**
