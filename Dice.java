@@ -14,8 +14,9 @@ public class Dice{
         r1 = new Rectangle();
         r1.changeSize(200,200);
         r1.makeVisible();
-        value = 1;
-        isVisible = false;
+        
+        roll();
+        isVisible = true;
     }
     /**
      * Returns value's attribute
@@ -29,8 +30,22 @@ public class Dice{
      * Throws the Dice and pass the value to value's attribute
      */
     public void roll(){
+        for (int i = 0; i < value; i++) {
+            circles[i].makeInvisible();
+        }
+        
         Random aleatorio = new Random();
         value = aleatorio.nextInt(5) + 1;
+        
+        int xPos = 15;
+        int yPos = 15;
+        
+        for (int i = 0; i < value; i++){
+            circles[i] = new Circle(xPos + (i*xPos), yPos + (i*yPos));
+            
+            xPos += 4;
+            yPos += 4;
+        }
     }
 
     /**
