@@ -52,12 +52,13 @@ public class Dice{
      * Makes the Dice visible in the Screen
      */
     public void makeVisible(){
+        r1.makeVisible();
     }
 
     /**
      * Makes the Dice invisible in the Screen
      */
     public void makeInvisible(){
-
+        r1.makeInvisible();
     }
 }
