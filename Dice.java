@@ -60,9 +60,14 @@ public class Dice{
      * Move Dice horizontally
      * @param distance the desired distance in pixels
      */
-    public int moveHorizontal(int distance){
-        return distance;
+    public void moveHorizontal(int distance){
+        r1.moveHorizontal(distance);
+        
+        for (int i = 0; i < value; i++){
+            circles[i].moveHorizontal(distance);
+        }
     }
+    
     /**
      * Makes the Dice visible in the Screen
      */
