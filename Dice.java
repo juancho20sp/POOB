@@ -54,6 +54,9 @@ public class Dice{
      */
     public void changeColor(String colorChange){
         r1.changeColor(colorChange);
+        for(int i=0; i< value;i++){
+            circles[i].changeColor(colorChange);
+        }
     }
 
     /**
