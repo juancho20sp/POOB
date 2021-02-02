@@ -73,6 +73,10 @@ public class Dice{
      */
     public void makeVisible(){
         r1.makeVisible();
+        
+        for (int i = 0; i < value; i++){
+            circles[i].makeVisible();
+        }
     }
 
     /**
@@ -80,5 +84,9 @@ public class Dice{
      */
     public void makeInvisible(){
         r1.makeInvisible();
+        
+        for (int i = 0; i < value; i++){
+            circles[i].makeInvisible();
+        }
     }
 }

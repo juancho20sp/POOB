@@ -23,8 +23,21 @@ public class Circle{
         diameter = 30;
         xPosition = 20;
         yPosition = 15;
-        color = "blue";
+        color = "white";
         isVisible = false;
+    }
+    
+    /**
+     * Constructor 
+     * @param xP : x position for the circle
+     * @param yP : y position for the circle
+     */
+    public Circle(int xP, int yP){
+        diameter = 30;
+        xPosition = xP;
+        yPosition = yP;
+        color = "white";
+        makeVisible();
     }
 
 
