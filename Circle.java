@@ -38,8 +38,7 @@ public class Circle{
         diameter = 30;
         xPosition = xP;
         yPosition = yP;
-        color = "white";
-        makeVisible();
+        color = "white";        
     }
 
 
