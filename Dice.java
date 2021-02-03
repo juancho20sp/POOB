@@ -153,6 +153,18 @@ public class Dice{
     }
     
     /**
+     * Move Dice verticall
+     * @param distance the desired distance in pixels
+     */
+    public void moveVertical(int distance){
+        r1.moveVertical(distance);
+        
+        for (int i = 0; i < 7; i++){
+            circles[i].moveVertical(distance);
+        }
+    }
+    
+    /**
      * Makes the Dice visible in the Screen
      */
     public void makeVisible(){
