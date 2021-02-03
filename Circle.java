@@ -40,6 +40,19 @@ public class Circle{
         yPosition = yP;
         color = "white";        
     }
+    
+    /**
+     * Constructor overloaded 
+     * @param xP : x position for the circle
+     * @param yP : y position for the circle
+     * @param d  : diameter of the circle
+     */
+    public Circle(int xP, int yP, int d){
+        diameter = d;
+        xPosition = xP;
+        yPosition = yP;
+        color = "red";        
+    }
 
 
     /**
