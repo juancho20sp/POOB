@@ -18,7 +18,9 @@ public class Circle{
     private String color;
     private boolean isVisible;
     
-
+    /**
+     * Constructor
+     */
     public Circle(){
         diameter = 30;
         xPosition = 20;
@@ -28,7 +30,7 @@ public class Circle{
     }
     
     /**
-     * Constructor 
+     * Constructor overloaded 
      * @param xP : x position for the circle
      * @param yP : y position for the circle
      */
@@ -36,23 +38,30 @@ public class Circle{
         diameter = 30;
         xPosition = xP;
         yPosition = yP;
-        color = "white";
-        makeVisible();
+        color = "white";        
     }
 
 
-       
+    /**
+     * Make a circle visible
+     */
     public void makeVisible(){
         isVisible = true;
         draw();
     }
     
-
+    
+    /**
+     * Makes a circle invisible
+     */
     public void makeInvisible(){
         erase();
         isVisible = false;
     }
 
+    /**
+     * Draw the circle
+     */
     private void draw(){
         if(isVisible) {
             Canvas canvas = Canvas.getCanvas();
@@ -63,6 +72,9 @@ public class Circle{
         }
     }
 
+    /**
+     * Erase the circle from canvas
+     */
     private void erase(){
         if(isVisible) {
             Canvas canvas = Canvas.getCanvas();

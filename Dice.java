@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Dice{
 
-    private Circle  circles [] = new Circle[6];
+    private Circle  circles [] = new Circle[7];
     private Rectangle r1;
     private int value;
     private boolean isVisible;
@@ -15,8 +15,18 @@ public class Dice{
         r1.changeSize(200,200);
         r1.makeVisible();
         
-        roll();
-        isVisible = true;
+        int iniX = 50;
+        int iniY = 50;
+        
+        circles[0] = new Circle(iniX, iniY);               
+        circles[1] = new Circle(3*iniX, iniY);
+        circles[2] = new Circle(iniX, 2*iniY);
+        circles[3] = new Circle(2*iniX, 2*iniY);
+        circles[4] = new Circle(3*iniX, 2*iniY);
+        circles[5] = new Circle(iniX, 3*iniY);
+        circles[6] = new Circle(3*iniX, 3*iniY);        
+        
+        roll();        
     }
     /**
      * Returns value's attribute
@@ -29,31 +39,81 @@ public class Dice{
     /**
      * Throws the Dice and pass the value to value's attribute
      */
-    public void roll(){
-        for (int i = 0; i < value; i++) {
-            circles[i].makeInvisible();
-        }
-        
+    public void roll(){      
         Random aleatorio = new Random();
         value = aleatorio.nextInt(5) + 1;
         
-        int xPos = 15;
-        int yPos = 15;
+        // Hide circles
+        hideCircles();        
         
-        for (int i = 0; i < value; i++){
-            circles[i] = new Circle(xPos + (i*xPos), yPos + (i*yPos));
-            
-            xPos += 4;
-            yPos += 4;
-        }
+        // Show circles
+        paintCircles(value);  
+        
+        isVisible = true;
     }
 
+    /**
+     * Paint some specific circles
+     * @param The value of the dice as an int
+     */
+    public void paintCircles(int value){
+        switch(value){
+            case 1:                
+                circles[3].makeVisible();
+                break;
+            case 2:
+                circles[2].makeVisible();
+                circles[4].makeVisible();
+                break;
+            case 3:
+                circles[0].makeVisible();
+                circles[3].makeVisible();
+                circles[6].makeVisible();
+                break;
+            case 4:
+                circles[0].makeVisible();
+                circles[1].makeVisible();
+                circles[5].makeVisible();
+                circles[6].makeVisible();
+                break;
+            case 5:
+                circles[0].makeVisible();
+                circles[1].makeVisible();
+                circles[3].makeVisible();
+                circles[5].makeVisible();
+                circles[6].makeVisible();
+                break;
+            case 6:
+                circles[0].makeVisible();
+                circles[1].makeVisible();
+                circles[2].makeVisible();
+                circles[4].makeVisible();
+                circles[5].makeVisible();
+                circles[6].makeVisible();
+                break;
+            default:
+                break;
+        }
+    }
+    
+    /**
+     * Hide all circles before a roll
+     */
+    public void hideCircles(){
+        for (int i = 0; i < 7; i++){
+            circles[i].makeInvisible();
+        }
+    }
+    
     /**
      * Changes Dice's color
      * @param color the color desired
      */
     public void changeColor(String colorChange){
         r1.changeColor(colorChange);
+        for(int i=0; i< 7;i++){
+            circles[i].changeColor(colorChange);
+        }
     }
 
     /**
@@ -63,7 +123,7 @@ public class Dice{
     public void moveHorizontal(int distance){
         r1.moveHorizontal(distance);
         
-        for (int i = 0; i < value; i++){
+        for (int i = 0; i < 7; i++){
             circles[i].moveHorizontal(distance);
         }
     }
@@ -74,9 +134,7 @@ public class Dice{
     public void makeVisible(){
         r1.makeVisible();
         
-        for (int i = 0; i < value; i++){
-            circles[i].makeVisible();
-        }
+        paintCircles(value);
     }
 
     /**
@@ -85,8 +143,6 @@ public class Dice{
     public void makeInvisible(){
         r1.makeInvisible();
         
-        for (int i = 0; i < value; i++){
-            circles[i].makeInvisible();
-        }
+        hideCircles();
     }
 }
