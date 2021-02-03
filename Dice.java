@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Dice{
 
-    private Circle  circles [] = new Circle[6];
+    private Circle  circles [] = new Circle[7];
     private Rectangle r1;
     private int value;
     private boolean isVisible;
@@ -15,7 +15,31 @@ public class Dice{
         r1.changeSize(200,200);
         r1.makeVisible();
         
-        roll();
+        int iniX = 50;
+        int iniY = 50;
+        
+        circles[0] = new Circle(iniX, iniY);
+        circles[0].makeVisible();
+        
+        circles[1] = new Circle(3*iniX, iniY);
+        circles[1].makeVisible();
+        
+        circles[2] = new Circle(iniX, 2*iniY);
+        circles[2].makeVisible();
+        
+        circles[3] = new Circle(2*iniX, 2*iniY);
+        circles[3].makeVisible();
+        
+        circles[4] = new Circle(3*iniX, 2*iniY);
+        circles[4].makeVisible();
+        
+        circles[5] = new Circle(iniX, 3*iniY);
+        circles[5].makeVisible();
+        
+        circles[6] = new Circle(3*iniX, 3*iniY);
+        circles[6].makeVisible();
+        
+        //roll();
         isVisible = true;
     }
     /**
