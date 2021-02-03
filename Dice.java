@@ -125,7 +125,7 @@ public class Dice{
     public void moveHorizontal(int distance){
         r1.moveHorizontal(distance);
         
-        for (int i = 0; i < value; i++){
+        for (int i = 0; i < 7; i++){
             circles[i].moveHorizontal(distance);
         }
     }
