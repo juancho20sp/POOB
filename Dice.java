@@ -28,6 +28,30 @@ public class Dice{
         
         roll();        
     }
+    
+    /**
+     * Create a Dice object
+     */
+    public Dice(int x, int d){
+        r1 = new Rectangle();
+        r1.changeSize(50,50);
+        r1.makeVisible();
+        
+        int iniX = 15;
+        int iniY = 15;
+        
+        circles[0] = new Circle(iniX, iniY, d);               
+        circles[1] = new Circle(3*iniX, iniY, d);
+        circles[2] = new Circle(iniX, 2*iniY, d);
+        circles[3] = new Circle(2*iniX, 2*iniY, d);
+        circles[4] = new Circle(3*iniX, 2*iniY, d);
+        circles[5] = new Circle(iniX, 3*iniY, d);
+        circles[6] = new Circle(3*iniX, 3*iniY, d);        
+        
+        roll();        
+    }
+    
+    
     /**
      * Returns value's attribute
      * @return returns the value of the dice
