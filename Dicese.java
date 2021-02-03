@@ -1,85 +1,102 @@
-
-/**
- * Write a description of class Dicese here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Dicese
-{
-    // instance variables - replace the example below with your own
-    private int n;
-    
-    public static int wins = 0;
-    public static int timesPlayed = 0;
-    
-    private Dice dices[];
-
-    /**
-     * Constructor for objects of class Dicese
-     */
-    public Dicese(int n)
-    {
-        this.n = n;
-        
-        dices = new Dice[n];
-        
-        int size = 60;
-        
-        for(int i = 0; i < n; i++){
-            dices[i] = new Dice(1, 10);
-            dices[i].moveHorizontal(size * i);
-        }
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return n + y;
-    }
-    
-    /**
-     * Reset game
-     */    
-    public void reset(){
-        wins = 0;
-        timesPlayed = 0;
-    }
-    
-    /**
-     * Play game once
-     */
-    public void play(){
-        for(int i = 0; i < this.n; i++){
-            dices[i].roll();
-        }
-        
-        // Aumentar el número de partidas jugadas
-        timesPlayed++;
-    }
-    
-    /**
-     * Play game 'n' times
-     * 
-     * @param The number of times the game will be played
-     */
-    public void play(int times){
-        for(int i = 0; i < times; i++){
-            // Tiramos los dados
-            for(int j = 0; j < this.n; j++){
-                dices[i].roll();
-            }
+            
+            /**
+             * Write a description of class Dicese here.
+             * 
+             * @author (your name) 
+             * @version (a version number or a date)
+             */
+            public class Dicese
+            {
+                // instance variables - replace the example below with your own
+                private int n;
+                
+                public static int wins = 0;
+                public static int timesPlayed = 0;
+                
+                private Dice dices[];
+            
+                /**
+                 * Constructor for objects of class Dicese
+                 */
+                public Dicese(int n)
+                {
+                    this.n = n;
+                    
+                    dices = new Dice[n];
+                    
+                    int size = 60;
+                    
+                    for(int i = 0; i < n; i++){
+                        dices[i] = new Dice(1, 10);
+                        dices[i].moveHorizontal(size * i);
+                    }
+                }
+            
+                /**
+                 * An example of a method - replace this comment with your own
+                 * 
+                 * @param  y   a sample parameter for a method
+                 * @return     the sum of x and y 
+                 */
+                public int sampleMethod(int y)
+                {
+                    // put your code here
+                    return n + y;
+                }
+                
+                /**
+                 * Reset game
+                 */    
+                public void reset(){
+                    wins = 0;
+                    timesPlayed = 0;
+                }
+                
+                /**
+                 * Print result of rolling the dice
+                 */
+                public void printResult(){
+                    String res = "";
+                    
+                    for(int i = 0; i < this.n; i++){
+                        dices[i].roll();
+                        res += dices[i].getValue();
+                    }
+                    
+                    // Mostramos el resultado del lanzamiento
+                    System.out.println(res);
+                }
+                
+                /**
+                 * Play game once
+                 */
+                public void play(){ 
+                    // Imprimimos el resultado
+                    printResult();
+                    
+                    // Aumentar el número de partidas jugadas
+                    timesPlayed++;
+                }
+                
+                /**
+                 * Play game 'n' times
+                 * 
+                 * @param The number of times the game will be played
+             */
+            public void play(int times){
+                for(int i = 0; i < times; i++){
+                    // Tiramos los dados
+                    for(int j = 0; j < this.n; j++){
+                        dices[i].roll();
+                    }
+                
+                    // Imprimimos el resultado
+                    printResult();
             
             
-            // Aumentar el número de partidas jugadas
-            timesPlayed++;
-        }
+                    // Aumentar el número de partidas jugadas
+                    timesPlayed++;
+                }
     }
     
     /**
