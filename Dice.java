@@ -39,11 +39,7 @@ public class Dice{
     /**
      * Throws the Dice and pass the value to value's attribute
      */
-    public void roll(){
-        for (int i = 0; i < value; i++) {
-            circles[i].makeInvisible();
-        }
-        
+    public void roll(){      
         Random aleatorio = new Random();
         value = aleatorio.nextInt(5) + 1;
         
@@ -62,8 +58,7 @@ public class Dice{
      */
     public void paintCircles(int value){
         switch(value){
-            case 1:
-                //circles[4] = new
+            case 1:                
                 circles[3].makeVisible();
                 break;
             case 2:
@@ -116,7 +111,7 @@ public class Dice{
      */
     public void changeColor(String colorChange){
         r1.changeColor(colorChange);
-        for(int i=0; i< value;i++){
+        for(int i=0; i< 7;i++){
             circles[i].changeColor(colorChange);
         }
     }
@@ -139,9 +134,7 @@ public class Dice{
     public void makeVisible(){
         r1.makeVisible();
         
-        for (int i = 0; i < value; i++){
-            circles[i].makeVisible();
-        }
+        paintCircles(value);
     }
 
     /**
@@ -150,8 +143,6 @@ public class Dice{
     public void makeInvisible(){
         r1.makeInvisible();
         
-        for (int i = 0; i < value; i++){
-            circles[i].makeInvisible();
-        }
+        hideCircles();
     }
 }
