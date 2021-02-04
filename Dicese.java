@@ -8,7 +8,7 @@
     public class Dicese
     {
         // instance variables - replace the example below with your own
-        private int n;
+        private int cantidadDados;
         private int rows;
         private int columns;
         
@@ -24,7 +24,7 @@
     public Dicese(int n)
     {
         if(n >= 2 && n < 7){
-            this.n = n;
+            this.cantidadDados= n;
         
             dices = new Dice[n];
         
@@ -78,7 +78,7 @@
     public int sampleMethod(int y)
     {
         // put your code here
-        return n + y;
+        return cantidadDados + y;
     }
                 
     /**
@@ -107,7 +107,7 @@
             
             System.out.println("\n");
         } else {
-            for(int i = 0; i < this.n; i++){
+            for(int i = 0; i < this.cantidadDados; i++){
                 dices[i].roll();
                 res += dices[i].getValue();
             }
@@ -141,7 +141,7 @@
     public void play(int times){
         for(int i = 0; i < times; i++){
             // Tiramos los dados
-            for(int j = 0; j < this.n; j++){
+            for(int j = 0; j < this.cantidadDados; j++){
                 dices[j].roll();
             }
         
@@ -155,6 +155,85 @@
             timesPlayed++;
         }
     }
+    /**
+     * Determine if there is a diagonal winner
+     * @return true if there is a diaonal winner, otherwise false
+     */
+    public boolean winByDiagonal(){
+        int value = dicesV2[0][0].getValue();
+        boolean winDiag = false;
+        value = dicesV2[0][0].getValue();  
+        boolean valid3 = false;          
+        for(int i=1;i < this.rows;i++){
+            valid3 = true;
+            if(value != dicesV2[i][i].getValue()-1){
+                valid3 = false;
+                break;
+            }
+            value = dicesV2[i][i].getValue();
+        }
+        if(valid3){
+            winDiag = true;
+        }
+
+    return winDiag;
+
+    }
+    /**
+     * Determine if there is a row winner
+     * @return true if there is a row winner, otherwise false
+     */
+    public boolean winByRow(){
+        int value = dicesV2[0][0].getValue();
+        boolean winRow = false;
+        boolean valid1 = false;
+        for(int i = 0; i < this.rows; i++){  
+            valid1 = true;
+            
+            for(int j = 0; j < this.columns - 1; j++){
+                if (value == dicesV2[i][j+1].getValue() - 1){
+                    valid1 = valid1 && true;
+                }else{
+                    valid1 = false;
+                }
+                value = dicesV2[i][j+1].getValue();
+                    
+            }
+            
+            if (valid1){
+                winRow = true;
+                break;
+            }
+            value = dicesV2[i][0].getValue();
+        }
+        return winRow;  
+    }
+    /**
+     * Determine if there is a column winner
+     * @return true if there is a column winner, otherwise false
+     */
+    public boolean winByColumn(){
+        boolean winColumn = false;
+        int value = dicesV2[0][0].getValue();
+            for(int i = 0; i < this.rows; i++){ 
+                boolean valid2 = true;
+                for(int j = 0; j < this.columns - 1; j++){
+                    if (value == dicesV2[j+1][i].getValue() - 1){
+                        valid2 = valid2 && true;
+                    }else{
+                        valid2 = false;
+                    }
+                    value = dicesV2[j+1][i].getValue();
+                }
+                
+                if (valid2){
+                    winColumn = true;
+                    break;
+                }
+                value = dicesV2[0][i].getValue();
+            }
+        return winColumn;
+    }
     
     /**
      * Is winning state
@@ -164,76 +243,21 @@
         boolean isWin = true;
         
         if(this.rows != 0 && this.columns != 0 && rows == columns){
-            boolean winRow = false;
-            boolean winColumn = false;
-            boolean winDiag = false;
-            
-            int value = dicesV2[0][0].getValue();
-            
-            // Victoria por fila
-            for(int i = 0; i < this.rows; i++){  
-                boolean valid = true;
-                
-                for(int j = 0; j < this.columns - 1; j++){
-                    if (value == dicesV2[i][j+1].getValue() - 1){
-                        valid = valid && true;
-                    } else {
-                        valid = valid && false;
-                    }
-                        
-                }
-                
-                if (valid){
-                    winRow = true;
-                    break;
-                }
-                value = dicesV2[i][0].getValue();
+            boolean resultRow = winByRow();
+            boolean resultColumn = winByColumn();
+            boolean resultDiag = winByDiagonal();
+            System.out.println("Por fila: " + resultRow);
+            System.out.println("Por columna: " + resultColumn);
+            System.out.println("Por diagonal: " + resultDiag);
+
+            if(!resultRow && !resultColumn && !resultDiag){
+                isWin = false;
             }
-            
-            // Victoria por columna
-            value = dicesV2[0][0].getValue();
-            for(int i = 0; i < this.rows; i++){ 
-                boolean valid = true;
-                for(int j = 0; j < this.columns - 1; j++){
-                    if (value == dicesV2[j+1][i].getValue() - 1){
-                        valid = valid && true;
-                    } else {
-                        valid = valid && false;
-                    }
-                }
-                
-                if (valid){
-                    winColumn = true;
-                    break;
-                }
-                value = dicesV2[0][i].getValue();
-            }
-            
-            // Victoria por diagonal
-            value = dicesV2[0][0].getValue();            
-            for(int i = 0; i < this.rows-1; i++){
-                for(int j = 0; j < this.columns-1; j++){
-                    if(value == dicesV2[i+1][j+1].getValue() - 1){
-                        winDiag = winDiag && true;
-                    } else {
-                        winDiag = winDiag && false;
-                    }
-                }
-                
-            }
-            
-            //if(!winRow && !winColumn && !winDiag){
-            //    isWin = false;
-            //}
-            
-            System.out.println("Por fila: " + winRow);
-            System.out.println("Por columna: " + winColumn);
-            System.out.println("Por diagonal: " + winDiag);
             
         } else {
             int value = dices[0].getValue();
         
-            for(int i = 0; i < this.n - 1; i++){
+            for(int i = 0; i < this.cantidadDados - 1; i++){
                 if(value != dices[i + 1].getValue() - 1){
                     isWin = false;
                 }
@@ -287,8 +311,5 @@
      * @param Vertical units to move (int)
      */
     
-    
-    
-        
     
 }
